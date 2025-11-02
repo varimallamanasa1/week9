@@ -13,22 +13,22 @@ pipeline {
         stage('Docker Login') {
             steps {
                 echo "Logging into Docker Hub..."
-                bat 'docker login -u vishnupriya68 -p "Shivapriya123@"'
+                bat 'docker login -u varimallamansa1 -p "Manasa@247"'
             }
         }
 
         stage('Push Docker Image to Docker Hub') {
             steps {
                 echo "Pushing Docker Image to Docker Hub..."
-                bat 'docker tag kubdemoapp:v1 vishnupriya68/sample1:kubeimage1'
-                bat 'docker push vishnupriya68/sample1:kubeimage1'
+                bat 'docker tag kubdemoapp:v1 varimallamansa1/sample1:kubeimage1'
+                bat 'docker push varimallamansa1/sample1:kubeimage1'
             }
         }
 
         stage('Deploy to Kubernetes') {
         steps {
         echo "Deploying to Kubernetes..."
-        withEnv(['KUBECONFIG=C:\\Users\\Vishnupriya\\.kube\\config']) {
+        withEnv(['KUBECONFIG=C:\\Users\\MANASA\\.kube\\config']) {
             bat 'kubectl apply -f deployment.yaml --validate=false'
             bat 'kubectl apply -f service.yaml'
         }
